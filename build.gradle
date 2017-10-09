@@ -1,0 +1,144 @@
+buildscript {
+    ext {
+        //profile
+        if (project.hasProperty("projectEnv")) {
+            projectEnv = project["projectEnv"]
+        } else {
+            projectEnv = "dev"
+        }
+        println "project environment:" + projectEnv
+        subprojectPath = project.getProjectDir().getPath();
+        separator = File.separator
+        //插件版本
+        springBootVersion = "1.5.7.RELEASE"
+        gradleDockerVersion = "1.2"
+
+    }
+    repositories {
+        mavenLocal()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath(
+                "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}",
+                "se.transmode.gradle:gradle-docker:${gradleDockerVersion}"
+        )
+    }
+}
+
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.springframework.boot"
+
+group "net.wangqiqi"
+version "0.0.1"
+description project.name
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+/*解决设置版本不起作用问题*/
+tasks.withType(JavaCompile) {
+    sourceCompatibility = JavaVersion.VERSION_1_8// 设置 JDK 版本
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+[compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
+
+repositories {
+    mavenLocal()
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {//指定java代码目录
+            srcDir "${subprojectPath}${separator}src${separator}main${separator}java"
+            exclude "resources${separator}**"
+        }
+        resources {//指定资源目录
+            srcDir "${subprojectPath}${separator}src${separator}main${separator}resources${separator}base"
+            srcDir "${subprojectPath}${separator}src${separator}main${separator}resources${separator}${projectEnv}"
+        }
+    }
+    test {
+        java {//指定java代码目录
+            srcDir "${subprojectPath}${separator}src${separator}test${separator}java"
+            exclude "resources${separator}**"
+        }
+        resources {//指定资源目录
+            srcDir "${subprojectPath}${separator}src${separator}test${separator}resources"
+        }
+    }
+}
+
+/*依赖排除*/
+configurations {
+    //排除spring-boot-starter-web引入
+    all*.exclude module: "spring-boot-starter-tomcat"
+    all*.exclude module: "spring-boot-starter-logging"
+    all*.exclude module: "tomcat-jdbc"
+    all*.exclude group: "log4j", module: "log4j"
+    all*.exclude group: "org.slf4j", module: "slf4j-log4j12"
+    all*.exclude group: "org.slf4j", module: "slf4j-jdk14"
+    all*.exclude group: "org.apache.logging.log4j", module: "log4j-to-slf4j"
+    all*.exclude group: "org.slf4j", module: "slf4j-jcl"
+    all*.exclude group: "ch.qos.logback", module: "logback-classic"
+    all*.exclude group: "org.codehaus.jackson"
+}
+
+dependencies {
+    compile(
+            //防止包冲突
+            "org.slf4j:slf4j-api:1.7.25",
+            "cglib:cglib:3.2.5",
+            //JSON方案是原生JSON+fastjson,注意别使用Gson及jackson,Spring框架默认使用fastjson
+            "org.json:json:20170516",
+            "com.alibaba:fastjson:1.2.39",
+
+            //日志方案选择slf4j与log4j2集成,注意别使用commons-logging与jdk-logging、log4j1、logback的集成原理
+            "com.lmax:disruptor:3.3.7",
+            "org.apache.logging.log4j:log4j-web:2.7",
+            "org.springframework.boot:spring-boot-starter-log4j2",
+
+            "org.springframework.boot:spring-boot-starter-aop",
+
+            "org.springframework.boot:spring-boot-starter-web",
+            "org.springframework.boot:spring-boot-starter-undertow",
+            "org.springframework.boot:spring-boot-starter-thymeleaf",
+
+            //apache-Commons系列
+            "org.apache.commons:commons-lang3:3.6",
+            "org.apache.commons:commons-collections4:4.1",
+
+
+            "org.springframework.boot:spring-boot-starter-cache",
+            "com.github.ben-manes.caffeine:caffeine:2.5.6",
+    )
+    compileOnly(
+            "org.projectlombok:lombok"
+    )
+    runtime(
+            "org.springframework.boot:spring-boot-devtools"
+    )
+}
+
+//强制使用gradle
+task wrapper(type: Wrapper) {
+    gradleVersion = "4.2.1"
+}
+//增量编译
+tasks.withType(JavaCompile) {
+    options.incremental = true
+}
+//不自动下载依赖源码和javadoc
+idea {
+    module {
+        downloadJavadoc = false
+        downloadSources = false
+    }
+}
+//清除out目录
+clean {
+    delete file("${subprojectPath}${separator}out")
+}
