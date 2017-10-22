@@ -1,286 +1,86 @@
 <!DOCTYPE html>
-<html>
-<head>
-<title>Home</title>
-<link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (Bootstrap's JavaScript plugins) -->
-<script src="../static/js/jquery.min.js"></script>
-<script src="../static/js/bootstrap.min.js"></script>
-<!-- Custom Theme files -->
-<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Gem Stone Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- dropdown -->
-<script src="../static/js/jquery.easydropdown.js"></script>
-<link href="../static/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
-<script src="../static/js/modernizr.custom.js"></script>
-<!-- //dropdown -->
-<!-- startsmothscrolling-->
-		<script type="text/javascript" src="../static/js/move-top.js"></script>
-		<script type="text/javascript" src="../static/js/easing.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
-				});
-			});
-		</script>
-<!-- startsmothscrolling-->
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment/head_info :: head}"/>
 <body>
 <!--banner-->
-<script src="../static/js/responsiveslides.min.js"></script>
-<script>  
-    $(function () {
-      $("#slider").responsiveSlides({
-      	auto: true,
-      	nav: true,
-      	speed: 500,
-        namespace: "callbacks",
-        pager: true,
-      });
-    });
-  </script>
-<div class="banner-bg banner-bg1">	
-	  <div class="container">
-			 <div class="header">
-			       <div class="logo">
-						 <a href="index.html">华棋翡翠阁</a>
-				   </div>							 
-				  <div class="top-nav">										 
-						<label class="mobile_menu" for="mobile_menu">
-						<span>Menu</span>
-						</label>
-						<input id="mobile_menu" type="checkbox">
-					   <ul class="nav">
-						 <li><a href="index.html"><img src="../static/images/home.png" alt="" /></a></li>
-						 <li><a href="about.html">关于</a></li>
-						 <li class="dropdown1"><a href="jewellery.html">珠宝</a>
-							 <ul class="dropdown2">
-									<li><a href="jewellery.html">吊坠</a></li>
-									<li><a href="jewellery.html">手镯</a></li>
-									<li><a href="jewellery.html">戒指</a></li>
-									<li><a href="jewellery.html">珍珠</a></li>
-							  </ul>
-						 </li> 
-							  <li class="dropdown1"><a href="typography.html">金币</a>
-							  <ul class="dropdown2">
-									<li><a href="typography.html">1 GRAM</a></li>
-									<li><a href="typography.html">5 GRAMS</a></li>
-									<li><a href="typography.html">10 GRAMS</a></li>												
-							  </ul>
-						  </li>
-						 <li class="dropdown1"><a href="gallery.html">画廊</a>
-							 <ul class="dropdown2">
-										<li><a href="gallery.html">GALLERY 1</a></li>
-										<li><a href="gallery.html">GALLERY 2</a></li>
-										<li><a href="gallery.html">GALLERY 3</a></li>
-							  </ul>
-						 </li>               
-						 <li><a class="scroll" href="#contact">联系</a></li>
-					  </ul>
-				 </div>
-				 <div class="clearfix"></div>
-			 </div>
-	  </div>	 
-	 <div class="caption">
-		 <div class="slider">
-					   <div class="callbacks_container">
-						   <ul class="rslides" id="slider">
-								<li><h1>精致的珠宝设计师</h1></li>	
-								<li><h1>独家品质</h1></li>
-								<li><h1>最新的设计和最好的价格</h1></li>
-						  </ul>
-						  <p>与我们的珠宝你发现你的自然美景</p>
-						  <a class="morebtn" href="#">更多</a>
-					  </div>
-				  </div>
-	 </div>
-	 <div class="dwn">
-		<a class="scroll" href="#cate"><img src="../static/images/scroll.png" alt=""/></a>
-	 </div>				 
+<div class="banner-bg banner-bg1">
+    <div th:replace="~{fragment/container-info :: container}"/>
 </div>
 <!--/banner-->
 <!-- welcome -->
 <div class="welcome">
-	<div class="container">
-		<div class="wel-header">
-			<h3>欢迎</h3>
-		</div>
-		<div class="wel-grids">
-			<div class="col-md-5 wel-left">
-				<p>Sed ut perspiciatis unde omnis iste natus 
-				error sit voluptatem accusantium doloremque laudantium, 
-				totam rem aperiam, eaque ipsa quae ab illo inventore 
-				veritatis et quasi architecto beatae vitae.</p>
-			</div>
-			<div class="col-md-2 wel-middle text-center">
-				<img src="../static/images/444.png" alt=" "/>
-			</div>
-			<div class="col-md-5 wel-right">
-				<p>Sed ut perspiciatis unde omnis iste natus 
-				error sit voluptatem accusantium doloremque laudantium, 
-				totam rem aperiam, eaque ipsa quae ab illo inventore 
-				veritatis et quasi architecto beatae vitae.</p>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="wel-header">
+            <h3>欢迎</h3>
+        </div>
+        <div class="wel-grids">
+            <div class="col-md-5 wel-left">
+                <p>Sed ut perspiciatis unde omnis iste natus
+                    error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore
+                    veritatis et quasi architecto beatae vitae.</p>
+            </div>
+            <div class="col-md-2 wel-middle text-center">
+                <img src="images/444.png" alt=" "/>
+            </div>
+            <div class="col-md-5 wel-right">
+                <p>Sed ut perspiciatis unde omnis iste natus
+                    error sit voluptatem accusantium doloremque laudantium,
+                    totam rem aperiam, eaque ipsa quae ab illo inventore
+                    veritatis et quasi architecto beatae vitae.</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 </div>
 <!-- welcome -->
 <!--categories-->
 <div id="cate" class="categories">
-	 <div class="container">
-		<div class="cat-head">
-			<h3>最新设计</h3>
-		</div>
-		 <div class="categorie-grids cs-style-1">
-				 <div class="col-md-4 cate-grid grid">
-					<figure>
-						<img src="../static/images/c1.jpg" alt="">
-						<figcaption>
-							<h3>ANTIQUE PIECE</h3>
-							<span>Accusantium Dolor</span>
-							<a href="#">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-				 <div class="col-md-4 cate-grid grid">
-					 <figure>
-						<img src="../static/images/c2.jpg" alt="">
-						<figcaption>
-							<h3>ANTIQUE PIECE</h3>
-							<span>Accusantium Dolor</span>
-							<a href="#">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
+    <div class="container">
+        <div class="cat-head">
+            <h3>最新设计</h3>
+        </div>
+        <div class="categorie-grids cs-style-1">
+            <div class="col-md-4 cate-grid grid" th:each="prod:${categoryModeList}">
+                <figure>
+                    <img th:attr="src=${prod.imgSrc}" alt="">
+                    <figcaption>
+                        <h3 th:text="${prod.title}"/>
+                        <span th:text="${prod.description}"/>
+                        <a href="gallery.html">VIEW</a>
+                    </figcaption>
+                </figure>
+            </div>
 
-
-				 <div class="col-md-4 cate-grid grid">
-					 <figure>
-						<img src="../static/images/c3.jpg" alt="">
-						<figcaption>
-							<h3>ANTIQUE PIECE</h3>
-							<span>Accusantium Dolor</span>
-							<a href="#">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-				 <div class="col-md-4 cate-grid grid">
-					<figure>
-						<img src="../static/images/c4.jpg" alt="">
-						<figcaption>
-							<h3>ANTIQUE PIECE</h3>
-							<span>Accusantium Dolor</span>
-							<a href="#">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-				 <div class="col-md-4 cate-grid grid">
-					<figure>
-						<img src="../static/images/c5.jpg" alt="">
-						<figcaption>
-							<h3>ANTIQUE PIECE</h3>
-							<span>Accusantium Dolor</span>
-							<a href="#">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-				 <div class="col-md-4 cate-grid grid">
-					 <figure>
-						<img src="../static/images/c6.jpg" alt="">
-						<figcaption>
-							<h3>ANTIQUE PIECE</h3>
-							<span>Accusantium Dolor</span>
-							<a href="#">VIEW</a>
-						</figcaption>
-					</figure>
-				 </div>
-
-			 <div class="clearfix"></div>
-		 </div>
-	 </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 </div>
 <!--categories-->
 <!--flex slider-->
 <div class="flex-slider">
-	<div class="container">
-	</div>
+    <div class="container">
+    </div>
 </div>
 <!--flex slider-->
-<!--contact-->
-<div id="contact" class="contact">
-	<div class="container">
-		<h3>联系我们</h3>
-		<p>请联系我们咨询和购买选项。</p>
-			<div class="cont-grids">
-				<div class="col-md-6 contact-left">
-					<form>
-						 <input type="text" placeholder="NAME" required="">
-						 <input type="text" placeholder="SURNAME" required="">			 
-						 <input class="user" type="text" placeholder="E-MAIL" required=""><br>
-						 <textarea placeholder="MESSAGE"></textarea>
-						 <input type="submit" value="SEND">
-					</form>
-				</div>
-				<div class="col-md-6 contact-right">
-					<iframe src="map.html" width="600" height="300" frameborder="0" scrolling="no"></iframe>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-	</div>
-</div>
-<!---->
-<div class="footer">
-	<div class="container">
-		<div class="footer-grids">
-			<div class="logo2">
-				 <a href="index.html">GEM STONE</a>
-			</div>
-			<div class="ftr-menu">
-				 <ul>
-					 <li><a href="about.html">ABOUT</a></li>
-					 <li><a href="jewellery.html">JEWELLERY</a></li>
-					 <li><a href="typography.html">GOLD COINS</a></li>
-					 <li><a href="gallery.html">GALLERY</a></li>
-					 <li><a class="scroll" href="#contact">CONTACT</a></li>
-				 </ul>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-
-	</div>
-</div>
-<div class="copy-right">
-	<div class="container">
-			<p>Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-	</div>
-</div>
-<!---->
+<!--footer-->
+<div th:replace="~{fragment/footer-info :: footer}"/>
+<!--footer-->
 <!-- smooth scrolling -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-		/*
-			var defaults = {
-			containerID: 'toTop', // fading element id
-			containerHoverID: 'toTopHover', // fading element hover id
-			scrollSpeed: 1200,
-			easingType: 'linear' 
-			};
-		*/								
-		$().UItoTop({ easingType: 'easeOutQuart' });
-		});
-	</script>
-	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+            };
+        */
+        $().UItoTop({easingType: 'easeOutQuart'});
+    });
+</script>
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
 </body>
 </html>

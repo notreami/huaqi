@@ -105,7 +105,15 @@ dependencies {
 
             "org.springframework.boot:spring-boot-starter-web",
             "org.springframework.boot:spring-boot-starter-undertow",
+
+            "org.thymeleaf:thymeleaf:3.0.7.RELEASE",
+            "org.thymeleaf:thymeleaf-spring4:3.0.7.RELEASE",
+            "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.2.2",
             "org.springframework.boot:spring-boot-starter-thymeleaf",
+
+            "com.github.mxab.thymeleaf.extras:thymeleaf-extras-data-attribute:2.0.1",
+            "org.thymeleaf.extras:thymeleaf-extras-conditionalcomments:2.1.2.RELEASE",
+            "org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.1.RELEASE",
 
             //apache-Commons系列
             "org.apache.commons:commons-lang3:3.6",
@@ -113,7 +121,7 @@ dependencies {
 
 
             "org.springframework.boot:spring-boot-starter-cache",
-            "com.github.ben-manes.caffeine:caffeine:2.5.6",
+            "com.github.ben-manes.caffeine:caffeine:2.5.6"
     )
     compileOnly(
             "org.projectlombok:lombok"

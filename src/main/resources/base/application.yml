@@ -5,7 +5,6 @@ spring:
   profiles:
     active: dev
   thymeleaf:
-    cache: true
     enabled: true
     encoding: UTF-8
     mode: HTML5
@@ -19,7 +18,7 @@ server:
     accesslog:
       enabled: true
       pattern: "%t %I %q ‘%{i,X-Real-IP}/%a' %l %u %v '%r' %s '%b/%{o,Content-Length}' '%{o,Content-Type}' '%{i,User-Agent}' '%{i,Referer}'"
-      dir: /opt/logs/mangocore/bigbackend/access
+      dir: /opt/logs/wangqiqi/huaqi/access
       rotate: true
     buffer-size: 1024
     direct-buffers: true
@@ -28,5 +27,5 @@ server:
   session:
     timeout: 60  # session最大超时时间(分钟)，默认为30
   error:
-    path: /error  # 错误页，指定发生错误时，跳转的URL
+    path: /404.html  # 错误页，指定发生错误时，跳转的URL
 
